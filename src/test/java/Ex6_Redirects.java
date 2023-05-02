@@ -6,18 +6,22 @@ public class Ex6_Redirects {
 
     @Test
     public void redirectTest() {
-        Response response = RestAssured
+
+        Response response1 = RestAssured
                 .given()
                 .redirects()
-                .follow(true)
+                .follow(false)
                 .when()
                 .get("https://playground.learnqa.ru/api/long_redirect")
                 .andReturn();
 
-        int statusCode = response.getStatusCode();
-        System.out.println(statusCode);
+        String link = response1.getHeader("Location");
+        System.out.println(link);
+
     }
 }
+
+
 
 
 
